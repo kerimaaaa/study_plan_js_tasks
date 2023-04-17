@@ -107,57 +107,53 @@
 // #9
 // Write a JavaScript program to draw a smile
 	
-const smile = document.querySelector(".smile");
-let eye1 = document.createElement('div');
-let eye2 = document.createElement('div');
-smile.append(eye1);
-smile.append(eye2);
-eye1.className = 'rightEye';
-eye2.className = 'leftEye';
-function css(element, style) {
-    for (const property in style)
-        element.style[property] = style[property];
-}
-const rightEye = document.querySelector('.rightEye');
-const leftEye = document.querySelector('.leftEye');
 
-css(smile, {
-    position: 'relative'
-})
-css(rightEye, {
-    position: 'absolute',
-    'background-color': 'black',
-    width: '25px',
-    height: '25px',
-    'box-sizing': 'border-box',
-    'margin-top':'100px',
-    'margin-left':'80px',
-    'border-radius': '50%'
-});
-css(leftEye, {
-    position: 'absolute',
-    'background-color': 'black',
-    width: '25px',
-    height: '25px',
-    'box-sizing': 'border-box',
-    'margin-top':'100px',
-    'margin-left':'200px',
-    'border-radius': '50%'
-});
-function mySmile() { 
-let  smile = document.querySelector(".smile");
-
-    let laugh = smile.getContext("2d");    
-    //105 means x it will go the left side and 75 means y it will go upward of //downward    
-    laugh.moveTo(105, 75);    
-    laugh.beginPath();    
-    laugh.strokeStyle = "red";    
-    laugh.arc(75, 75, 30, 0, Math.PI, false);    
-    //to draw a half rounded circle with a line stroke we can invoke the stroke function    
-    laugh.stroke();    
- }  
-   
+   function myFace() {    
+    const mycanva = document.getElementById("mycanvas");      
+    let draw = mycanva.getContext("2d");    
+      
+    draw.beginPath();       
+    draw.fillStyle = "yellow";        
+    draw.arc(75, 75, 50, 0, Math.PI * 2, true);      
+    draw.closePath();      
+ draw.fill();    
+}   
+function myEye() {    
+    const mycanva = document.getElementById("mycanvas");    
+    let eye = mycanva.getContext("2d");       
+    eye.moveTo(55, 50);       
+    eye.beginPath();       
+    eye.fillStyle = "black";    
+      
+    eye.arc(50, 50, 4, 0, Math.PI * 2, true);    
+    eye.closePath();    
+    eye.fill();    
+    eye.moveTo(103, 49);    
+     
+    eye.beginPath();    
+    eye.fillStyle = "black";    
+    eye.arc(100, 50, 4, 0, Math.PI * 2, true);    
+    eye.closePath();    
+    eye.fill();    
+ }   
+ function mySmile() {    
+    const mycanva = document.getElementById("mycanvas");    
+    let smile = mycanva.getContext("2d");      
+    smile.moveTo(105, 75);    
+    smile.beginPath();    
+    smile.strokeStyle = "black";    
+    smile.arc(75, 75, 30, 0, Math.PI, false);      
+    smile.stroke();    
+ }       
+     
+ function bodyLoad() {    
+    myFace();    
+    myEye();    
     mySmile();    
+ }   
+
+
+       
  
 
 
